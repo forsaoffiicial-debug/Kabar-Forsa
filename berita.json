@@ -1,0 +1,22 @@
+[
+  {
+    "judul": "Judul Berita Pertama",
+    "kategori": "Berita",
+    "penulis": "Nama Penulis",
+    "tanggal": "20 Nov 2026",
+    "ringkasan": "Ringkasan singkat satu atau dua kalimat.",
+    "gambar": "foto/berita1.jpg",
+    "isi": [
+      "Paragraf pertama isi berita.",
+      "Paragraf kedua isi berita."
+    ]
+  },
+  {
+    "judul": "Judul Berita Kedua",
+    "kategori": "Opini",
+    "penulis": "Nama Penulis",
+    "tanggal": "19 Nov 2026",
+    "ringkasan": "Ringkasan singkat.",
+    "isi": ["Paragraf satu.", "Paragraf dua."]
+  }
+]
