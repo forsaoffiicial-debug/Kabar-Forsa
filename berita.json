@@ -1,22 +1,19 @@
 [
   {
-    "judul": "Judul Berita Pertama",
-    "kategori": "Berita",
-    "penulis": "Nama Penulis",
+    "judul": "FORSA Gelar Webinar Ilmiah, Angkat Potensi Sumber Daya Lokal Menuju Inovasi Berkelanjutan",
+    "kategori": "Kegiatan",
+    "penulis": "Amin Mufrodi",
     "tanggal": "20 Nov 2026",
-    "ringkasan": "Ringkasan singkat satu atau dua kalimat.",
-    "gambar": "foto/berita1.jpg",
+    "ringkasan": "FORSA menyelenggarakan webinar ilmiah bertajuk From Local Resource to Sustainable Innovation pada Sabtu, 21 November 2026, pukul 09.00 WIB via Google Meet dan terbuka untuk umum.",
+    "gambar": "webinar-ilmiah.jpg",
     "isi": [
-      "Paragraf pertama isi berita.",
-      "Paragraf kedua isi berita."
+      "SERANG – Forum Riset, Penulisan Ilmiah, dan Jurnalistik Akademik (FORSA) akan menyelenggarakan webinar ilmiah bertajuk “From Local Resource to Sustainable Innovation” pada Sabtu, 21 November 2026, pukul 09.00 WIB. Kegiatan ini dilaksanakan secara daring melalui platform Google Meet dan terbuka untuk umum.",
+      "Webinar ini diselenggarakan sebagai ruang berbagi pengetahuan sekaligus mendorong mahasiswa untuk melihat potensi sumber daya lokal sebagai peluang pengembangan inovasi yang berkelanjutan. Melalui forum akademik ini, peserta diharapkan dapat memperluas wawasan mengenai pentingnya riset dan kreativitas dalam mengembangkan potensi lokal menjadi gagasan yang memiliki nilai kebermanfaatan.",
+      "Kegiatan tersebut menghadirkan dua pemateri, yakni Citra Desvasella Rahmi dan Annisa, yang merupakan mahasiswa Program Studi Tadris IPA UIN Sultan Syarif Kasim Riau. Diskusi akan dipandu oleh Raihan Muzacky, anggota Departemen Pena FORSA, sebagai moderator.",
+      "Melalui kegiatan ini, FORSA berupaya menghadirkan ruang akademik yang tidak hanya berorientasi pada penyampaian materi, tetapi juga mendorong tumbuhnya budaya berpikir kritis, kreatif, dan produktif di kalangan mahasiswa.",
+      "Selain memperoleh wawasan keilmuan, peserta juga akan mendapatkan e-sertifikat sebagai bentuk apresiasi atas partisipasi dalam kegiatan tersebut.",
+      "Webinar ini terbuka bagi masyarakat umum yang memiliki ketertarikan terhadap pengembangan ilmu pengetahuan, riset, dan inovasi berbasis potensi lokal. Pendaftaran dapat dilakukan melalui kode QR yang tersedia pada poster kegiatan.",
+      "Melalui penyelenggaraan webinar ini, FORSA berharap semakin banyak mahasiswa yang berani mengembangkan gagasan, mengangkat potensi di lingkungan sekitarnya, serta menjadikan riset sebagai salah satu jalan untuk menghadirkan inovasi yang bermanfaat bagi masyarakat."
     ]
-  },
-  {
-    "judul": "Judul Berita Kedua",
-    "kategori": "Opini",
-    "penulis": "Nama Penulis",
-    "tanggal": "19 Nov 2026",
-    "ringkasan": "Ringkasan singkat.",
-    "isi": ["Paragraf satu.", "Paragraf dua."]
   }
 ]
