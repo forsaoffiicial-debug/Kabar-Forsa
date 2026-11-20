@@ -1,0 +1,61 @@
+name: Generate SEO & preview tautan
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - "berita.json"
+      - "generate_seo.py"
+      - "index.html"
+      - "*.jpg"
+      - "*.jpeg"
+      - "*.png"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  seo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Pasang Pillow (untuk gambar 1200x630)
+        run: pip install pillow
+
+      - name: Jalankan generate_seo.py
+        env:
+          SITE_URL_VAR: ${{ vars.SITE_URL }}
+        run: |
+          OWNER="$(echo "$GITHUB_REPOSITORY_OWNER" | tr 'A-Z' 'a-z')"
+          REPO="${GITHUB_REPOSITORY#*/}"
+          if [ -n "$SITE_URL_VAR" ]; then
+            SITE="$SITE_URL_VAR"
+          elif [ -f CNAME ]; then
+            SITE="https://$(tr -d '\r\n ' < CNAME)"
+          elif [ "$(echo "$REPO" | tr 'A-Z' 'a-z')" = "$OWNER.github.io" ]; then
+            SITE="https://$OWNER.github.io"
+          else
+            SITE="https://$OWNER.github.io/$REPO"
+          fi
+          echo "SITE = $SITE"
+          python3 generate_seo.py "$SITE"
+
+      - name: Commit hasil (jika ada perubahan)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for p in artikel og og-default.png sitemap.xml robots.txt index.html; do
+            [ -e "$p" ] && git add -A -- "$p"
+          done
+          if git diff --cached --quiet; then
+            echo "Tidak ada perubahan."
+          else
+            git commit -m "chore(seo): perbarui halaman preview, sitemap & og-image [skip ci]"
+            git push
+          fi
