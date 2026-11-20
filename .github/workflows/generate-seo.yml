@@ -1,0 +1,69 @@
+
+name: Generate SEO & Preview Tautan FORSA
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - "berita.json"
+      - "generate_share_pages.py"
+      - "*.jpg"
+      - "*.jpeg"
+      - "*.png"
+      - "*.webp"
+      - ".github/workflows/generate-seo.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  seo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Ambil repository
+        uses: actions/checkout@v4
+
+      - name: Siapkan Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Pasang Pillow
+        run: pip install pillow
+
+      - name: Generate halaman preview
+        env:
+          SITE_URL_VAR: ${{ vars.SITE_URL }}
+        run: |
+          OWNER="$(echo "$GITHUB_REPOSITORY_OWNER" | tr 'A-Z' 'a-z')"
+          REPO="${GITHUB_REPOSITORY#*/}"
+
+          if [ -n "$SITE_URL_VAR" ]; then
+            SITE="$SITE_URL_VAR"
+          elif [ -f CNAME ]; then
+            SITE="https://$(tr -d '\r\n ' < CNAME)"
+          elif [ "$(echo "$REPO" | tr 'A-Z' 'a-z')" = "$OWNER.github.io" ]; then
+            SITE="https://$OWNER.github.io"
+          else
+            SITE="https://$OWNER.github.io/$REPO"
+          fi
+
+          echo "Alamat website: $SITE"
+
+          python3 generate_share_pages.py --site "$SITE"
+
+      - name: Simpan hasil generator
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add -A -- artikel/
+
+          if git diff --cached --quiet; then
+            echo "Tidak ada perubahan."
+          else
+            git commit -m "chore(seo): generate artikel preview [skip ci]"
+            git push
+          fi
